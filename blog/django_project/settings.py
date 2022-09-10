@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "accounts",
     "posts",
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    "drf_spectacular"
 ]
 
 MIDDLEWARE = [
@@ -129,15 +130,22 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = { # new
-    "DEFAULT_PERMISSION_CLASSES": [
-        #"rest_framework.permissions.AllowAny",
-         "rest_framework.permissions.IsAuthenticated",
-        # "rest_framework.permissions.IsAdminUser",
-        # "rest_framework.permissions.IsAuthenticaderOrReadOnly",
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    # "DEFAULT_PERMISSION_CLASSES": [
+    #     #"rest_framework.permissions.AllowAny",
+    #      "rest_framework.permissions.IsAuthenticated",
+    #     # "rest_framework.permissions.IsAdminUser",
+    #     # "rest_framework.permissions.IsAuthenticaderOrReadOnly",
+    # ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
+    # )
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema"
+}
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Blog API Project",
+    "DESCRIPTION": "A sample blog to learn about DRF",
+    "VERSION": "1.0.0",
+    # OTHER SETTINGS
 }
 
 from datetime import timedelta
